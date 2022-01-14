@@ -15,11 +15,13 @@
       <td>{{product.price}}</td>
       <td [ngClass]="{'low-quantity': product.quantity < 3}">{{product.quantity}}</td> <!-- TODO: Display the quantity in red if it is lower than 3 -->
       <td>{{product.store}}</td>
+      <button (click)="onBuyProduct(product)" class="btn btn-primary">Osta</button>
+      <button (click)="onDeleteProduct(product)" class="btn btn-danger">X</button>
     </tr>
 
     <tr class="input-row" [formGroup]="form">
       <td><input formControlName="name" type="text" placeholder="Product" class="form-control"></td>
-      <td><input formControlName="price" type="text" placeholder="Price" class="form-control"></td>
+      <td><input formControlName="price" type="number" placeholder="Price" class="form-control"></td>
       <td><input formControlName="quantity" type="text" placeholder="Quantity" class="form-control"></td>
       <td><input formControlName="store" type="text" placeholder="Store" class="form-control"></td>
       <td><button type="submit" class="btn btn-success" style="width: 70px" (click)="addProduct()">Add</button></td>

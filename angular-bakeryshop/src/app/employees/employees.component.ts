@@ -19,7 +19,7 @@ export class EmployeesComponent implements OnInit {
 
   ngOnInit() {
     this.employeeService.getEmployees().subscribe(empFromDb => {
-      this.employees = empFromDb.data;
+      this.employees = empFromDb;
       console.log(this.employees);
     })
     this.initForm();

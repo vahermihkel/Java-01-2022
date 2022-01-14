@@ -36,11 +36,24 @@ export class ProductsComponent implements OnInit {
   addProduct(): void {
     const newProduct: Product = {
       name: this.form.get('name').value,
-      price: this.form.get('price').value,
+      price: Number(this.form.get('price').value),
       quantity: this.form.get('quantity').value,
       store: this.form.get('store').value
     };
     this.products.push(newProduct);
     this.initForm();
+    this.productService.addProduct(newProduct).subscribe();
+  }
+
+  onBuyProduct(product) {
+    this.productService.buyProduct(product).subscribe(res=>{
+      window.location.href = res.link;
+    });
+  }
+
+  onDeleteProduct(product): void {
+    let index = this.products.findIndex(prod => prod.id === product.id);
+    this.products.splice(index,1);
+    this.productService.deleteProduct(product).subscribe();
   }
 }

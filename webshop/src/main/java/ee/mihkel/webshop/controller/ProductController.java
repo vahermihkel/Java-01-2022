@@ -12,6 +12,7 @@ import java.util.List;
 
 // controller võimaldab frontendil päringuid teha
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
 
     // programmeerija
